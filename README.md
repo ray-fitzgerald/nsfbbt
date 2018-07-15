@@ -20,4 +20,4 @@ Build:
 
 Push to ibm cloud:    
 `ibmcloud target --cf`  
-`ibm cf push`  
+`ibmcloud cf push`  
