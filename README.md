@@ -15,3 +15,5 @@ Login and use correct region:
 ibmcloud login -a api.ng.bluemix.net
 
 
+Build: mvn package
+

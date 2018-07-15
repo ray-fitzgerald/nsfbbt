@@ -1,8 +1,8 @@
 ---
 applications:
- - name: GetStartedTomcat
+ - name: bbtnsf
    random-route: true
-   path: target/GetStartedTomcat.war
-   memory: 256M
+   path: target/nsf.war
+   memory: 512M
    instances: 1
    buildpack: java_buildpack
