@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src='js/webchat.js'></script>
+  <title>WebRTC client</title>
+</head>
+<body>
+
+  <div>
+    <video id="remoteView" width="640" height="480" autoplay style="display: inline;"></video>
+  </div>
+
+  <div>
+    <video id="selfView" width="320" height="240" autoplay style="display: inline;"></video>
+  </div>
+
+  <script type="text/javascript">
+  	connect("B");
+  </script>
+</body>
+</html>
