@@ -16,9 +16,9 @@ function logError(error) {
 function connect(username) {
   console.log('connect');
   var loc = window.location
-  var uri = "ws://" + loc.hostname + "/signal"
+  var uri = "wss://" + loc.hostname + "/signal"
   if (loc.port != "" && loc.port != 0) {
-  	uri = "ws://" + loc.hostname + ":" + loc.port + "/signal"
+  	uri = "wss://" + loc.hostname + ":" + loc.port + "/signal"
   }
   sock = new WebSocket(uri);
 
