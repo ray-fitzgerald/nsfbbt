@@ -45,12 +45,12 @@ public class SignalingSocketHandler extends TextWebSocketHandler {
 
             // quick check to verify that the username is not already taken and active
             if (client == null || !client.isOpen()) {
-                LOG.debug("Login {} : OK", username);
+                LOG.info("Login {} : OK", username);
                 // saves socket and username
                 clients.put(username, session);
                 clientIds.put(session.getId(), username);
             } else {
-                LOG.debug("Login {} : KO", username);
+                LOG.info("Login {} : KO", username);
             }
 
         } else if (RTC_TYPE.equalsIgnoreCase(signalMessage.getType())) {
@@ -74,7 +74,7 @@ public class SignalingSocketHandler extends TextWebSocketHandler {
                 // Convert our object back to JSON
                 String stringifiedJSONmsg = objectMapper.writeValueAsString(out);
 
-                LOG.debug("send message {}", stringifiedJSONmsg);
+                LOG.info("send message {}", stringifiedJSONmsg);
 
                 destSocket.sendMessage(new TextMessage(stringifiedJSONmsg));
             }
