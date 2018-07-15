@@ -22,7 +22,7 @@ public class Message {
         return attribution;
     }
     
-    public void setAttribution() {
+    public void setAttribution(String attribution) {
         this.attribution = attribution;
     }
 }
