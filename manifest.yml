@@ -1,8 +1,9 @@
 ---
 applications:
  - name: bbtnsf
-   random-route: true
    path: target/nsf.war
    memory: 512M
    instances: 1
    buildpack: java_buildpack
+   routes:
+   - route: bbtnsf.mybluemix.net
