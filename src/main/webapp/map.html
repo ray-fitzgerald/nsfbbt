@@ -1,0 +1,83 @@
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7V3A7O7_Q7F_NscS8a9MdTOjANjPDumU&callback=initMap"></script>
+<!--Current URL loading the Maps JavaScript API must been added to the list of allowed referrers-->
+
+<style>
+@media only screen and (max-width: 500px) {
+#map {
+    display: block;
+    margin: auto;
+    height: 300px;
+    width: 100%;
+}
+}
+@media only screen and (min-width: 500px) {
+#map {
+    display: block;
+    height: 100%;
+    width: 100%;
+    float: right;
+    position: fixed !important; 
+    top: 0;
+}
+}
+</style>
+
+<script>
+
+return_first = [
+"4460 Six Forks Rd Raleigh NC 27609",
+"4424 Capital Blvd Raleigh NC 27604",
+"3701 Barrett Dr Raleigh NC 27609"
+];
+
+var return_address = function (i){
+var output = null;
+output = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + i + '&key=AIzaSyCLek8EI_fAQ5Z3C0x_9r7QN3g8SLTJ_YI';
+return output;
+}
+
+var files = return_first.map(return_address);
+
+var results = [];
+
+var ajax_request = function(url) {
+    return $.ajax({
+    	url: url,
+});
+};
+
+$.when.apply($, files.map(ajax_request)).done(function() {
+    for (var i = 0; i < arguments.length; i++) {
+        results.push(arguments[i][0]);
+}});
+
+
+function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 11,
+      center: new google.maps.LatLng(35.82830, -78.63388),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });    
+    for (var i = 0; i < results.length; i++) {
+    	id = return_first[i]['ID'];
+    	lat = arguments[i][0]['results'][0]['geometry']['location']['lat'];
+    	lng = arguments[i][0]['results'][0]['geometry']['location']['lng'];
+    	var uluru = new google.maps.LatLng(lat, lng);
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+    	  id: id
+        });
+   }   
+}; 
+</script>
+
+
+
+</head>
+
+<body>
+<div id="map"></div>
+</body>
