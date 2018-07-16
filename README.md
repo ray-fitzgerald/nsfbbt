@@ -2,7 +2,9 @@
 hackathon project  
 https://bbtnsf.mybluemix.net/  
 
+Static html or other assets will go in src/main/webapp.
 
+Any back-end code goes in src/main/java
 
 
 notes:
