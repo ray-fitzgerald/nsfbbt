@@ -33,7 +33,21 @@ public class SignalingSocketHandler extends TextWebSocketHandler {
 
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-        LOG.debug("handleTextMessage : {}", message.getPayload());
+        try {
+            handleTextMessageWithErrors(session, message);
+        } catch (Exception e) {
+            LOG.error("Error handling text message in the socket: ", e);
+            throw e;
+        }
+
+    }
+
+    /**
+     * The stupid interface throws exception, so I have to put my real code inside a method that doesn't throw
+     */
+    private void handleTextMessageWithErrors(WebSocketSession session, TextMessage message) throws Exception {
+        
+        LOG.info("handleTextMessage : {}", message.getPayload());
 
         SignalMessage signalMessage = objectMapper.readValue(message.getPayload(), SignalMessage.class);
 
