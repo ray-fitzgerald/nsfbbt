@@ -9,7 +9,7 @@ public class MessageController {
     
     @RequestMapping("/message")
     public Message welcome() {        
-        return new Message("This Message came from the server", "Peter");
+        return new Message("This Message came from the server, I updated it as a test", "Peter");
     }
     
 }
